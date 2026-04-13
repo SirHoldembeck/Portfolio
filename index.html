@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | E-Portfolio</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding-bottom: 56px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+      padding: 36px 0 10px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+
+    .hero-text p {
+      color: #dbe4f0;
+      max-width: 700px;
+      margin: 0 0 22px;
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #0f172a;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.35);
+      color: white;
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .profile-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: #cbd5e1;
+    }
+
+    .profile-meta {
+      margin-top: 16px;
+    }
+
+    .profile-meta h3 {
+      margin: 0 0 4px;
+      font-size: 1.2rem;
+    }
+
+    .profile-meta p {
+      margin: 0;
+      color: #dbe4f0;
+    }
+
+    main {
+      padding: 34px 0 60px;
+    }
+
+    section {
+      margin: 26px 0;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 1.55rem;
+      color: #111827;
+    }
+
+    .lead {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .chip-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 16px 0 0;
+      list-style: none;
+    }
+
+    .chip-list li {
+      background: var(--accent-soft);
+      color: #1e3a8a;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .info-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      height: 100%;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .timeline-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 6px;
+    }
+
+    .timeline-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .project-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-list li {
+      margin: 10px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 12px 48px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Your Name | E-Portfolio</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#leadership">Leadership</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Professional, motivated, and ready to grow.</h1>
+          <p>
+            Welcome to my e-portfolio. This site highlights my skills, leadership style,
+            academic experience, and project work. It reflects both my current strengths
+            and the direction I want to grow in professionally.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <img src="https://via.placeholder.com/500x620.png?text=Add+Your+Photo" alt="Professional profile photo placeholder" />
+          <div class="profile-meta">
+            <h3>Your Name</h3>
+            <p>Student | Future Professional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="section-card">
+        <h2 class="section-title">About Me</h2>
+        <p class="lead">
+          I present myself as a dependable and growth-focused individual who values professionalism,
+          resilience, and continuous improvement. My personal brand is built on strong work ethic,
+          adaptability, and the ability to stay focused on long-term goals.
+        </p>
+
+        <div class="grid-2">
+          <div class="info-box">
+            <h3>Personal Brand</h3>
+            <p>
+              I aim to be seen as someone who is reliable, prepared, and committed to success.
+              I take pride in producing quality work, learning from every experience, and showing up
+              with consistency in both academic and professional settings.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Personal Values</h3>
+            <p>
+              I value hard work, integrity, and personal growth. These values shape how I make decisions,
+              approach challenges, and interact with others. They push me to stay responsible, keep improving,
+              and pursue opportunities that align with my goals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership">
+      <div class="section-card">
+        <h2 class="section-title">Leadership Style</h2>
+        <p>
+          My leadership style is supportive, organized, and goal-oriented. I believe strong leaders communicate clearly,
+          stay accountable, and help others succeed. I lead by example through consistency and responsibility, and I adapt
+          my approach depending on the situation so the team can perform at its best.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2 class="section-title">Skills & Achievements</h2>
+        <div class="grid-2">
+          <div>
+            <h3>Key Skills</h3>
+            <ul class="chip-list">
+              <li>Communication</li>
+              <li>Problem-Solving</li>
+              <li>Time Management</li>
+              <li>Teamwork</li>
+              <li>Adaptability</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Achievements</h3>
+            <ul>
+              <li>Completed major coursework and class projects successfully</li>
+              <li>Maintained strong academic performance</li>
+              <li>Built multiple projects that strengthened technical skills</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-card">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="timeline-item">
+          <h3>Student / Academic Experience</h3>
+          <div class="timeline-meta">Your School | Your Program</div>
+          <p>
+            I have completed coursework and projects that required critical thinking, collaboration,
+            and independent problem-solving. Through these experiences, I developed stronger technical,
+            organizational, and communication skills. I consistently worked to meet deadlines and produce
+            quality results.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Additional Role or Experience</h3>
+          <div class="timeline-meta">Add workplace, volunteer work, internship, or class team role</div>
+          <p>
+            Replace this section with a real role if you have one. Include your responsibilities, the work you completed,
+            and how you contributed. Keep it to 3 to 5 sentences for a clean and professional look.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-card">
+        <h2 class="section-title">Portfolio Projects</h2>
+        <div class="grid-3">
+          <article class="project-card">
+            <h3>Project One</h3>
+            <p>
+              A project where I developed an application using programming concepts and structured problem-solving.
+              This project improved my coding ability and strengthened my understanding of implementation.
+            </p>
+            <span class="project-tag">Application Development</span>
+          </article>
+
+          <article class="project-card">
+            <h3>Project Two</h3>
+            <p>
+              A coursework assignment focused on design, structure, and functionality. It helped me improve planning,
+              organization, and the ability to create polished work from start to finish.
+            </p>
+            <span class="project-tag">Design & Planning</span>
+          </article>
+
+          <article class="project-card">
+            <h3>Project Three</h3>
+            <p>
+              A collaborative or independent project that required communication, time management, and adaptability.
+              It demonstrated my ability to stay productive and complete meaningful work under expectations.
+            </p>
+            <span class="project-tag">Teamwork & Execution</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2 class="section-title">Elevator Speech</h2>
+        <p>
+          I am a motivated student focused on developing strong skills in my field. I bring dedication,
+          adaptability, and a willingness to learn. I have experience working on projects that require
+          problem-solving and teamwork. I am looking forward to continuing my growth and applying my skills
+          in real-world opportunities.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2 class="section-title">Supporting Documents</h2>
+        <ul>
+          <li>Add your resume as a PDF link in this section</li>
+          <li>Add screenshots or files from projects</li>
+          <li>Add certifications if you have any</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-card">
+        <h2 class="section-title">Conclusion</h2>
+        <p>
+          This e-portfolio represents my current skills, experience, and future goals. It highlights my growth,
+          commitment to improvement, and readiness for new opportunities. I am confident in my ability to continue
+          learning, contribute meaningfully, and build a strong professional future.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-card">
+        <h2 class="section-title">Contact</h2>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> yourprofessionalemail@example.com</li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/" target="_blank">linkedin.com/in/yourname</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/" target="_blank">github.com/yourusername</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Your Name. All rights reserved.
+  </footer>
+</body>
+</html>
