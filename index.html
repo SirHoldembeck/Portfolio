@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name | E-Portfolio</title>
+  <title>Mitchell Holdstock | E-Portfolio</title>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --surface: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #1d4ed8;
-      --accent-soft: #dbeafe;
-      --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --bg: #0b1220; /* deep navy */
+      --surface: #0f172a; /* dark surface */
+      --text: #e5e7eb; /* light text */
+      --muted: #9ca3af;
+      --accent: #f97316; /* orange */
+      --accent-soft: rgba(249, 115, 22, 0.15);
+      --cream: #e7e2d0; /* cream from logo */
+      --slate: #374151; /* slate */
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       --max: 1100px;
     }
 
@@ -42,9 +44,11 @@
     }
 
     header {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(249,115,22,0.15), transparent 60%),
+                  linear-gradient(135deg, #0b1220, #0f172a);
+      color: var(--text);
       padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
     }
 
     nav {
@@ -57,9 +61,18 @@
     }
 
     .logo {
-      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.4px;
+    }
+
+    .logo img {
+      height: 34px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -69,9 +82,11 @@
     }
 
     .nav-links a {
-      color: #e5e7eb;
+      color: var(--muted);
       font-size: 0.95rem;
     }
+
+    .nav-links a:hover { color: var(--cream); }
 
     .hero {
       display: grid;
@@ -109,13 +124,13 @@
     }
 
     .btn-primary {
-      background: white;
-      color: #0f172a;
+      background: var(--accent);
+      color: #0b1220;
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.35);
-      color: white;
+      border: 1px solid var(--border);
+      color: var(--text);
       background: transparent;
     }
 
@@ -125,8 +140,8 @@
     }
 
     .profile-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 22px;
       backdrop-filter: blur(8px);
@@ -175,7 +190,7 @@
     .section-title {
       margin: 0 0 14px;
       font-size: 1.55rem;
-      color: #111827;
+      color: var(--cream);
     }
 
     .lead {
@@ -206,19 +221,29 @@
 
     .chip-list li {
       background: var(--accent-soft);
-      color: #1e3a8a;
+      color: var(--accent);
       padding: 10px 14px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 0.95rem;
+      border: 1px solid rgba(249,115,22,0.35);
     }
 
     .info-box {
-      background: #f8fafc;
+      background: #111827; /* darker card */
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 20px;
       height: 100%;
+      color: var(--text);
+    }
+
+    .info-box p {
+      color: var(--muted);
+    }
+
+    .info-box h3 {
+      color: var(--cream);
     }
 
     .info-box h3 {
@@ -251,8 +276,8 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 22px;
-      background: #fff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      background: #0b1220;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
       height: 100%;
     }
 
@@ -266,8 +291,8 @@
       margin-top: 12px;
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--accent);
-      background: var(--accent-soft);
+      color: #0b1220;
+      background: var(--accent);
       padding: 7px 10px;
       border-radius: 999px;
     }
@@ -310,7 +335,10 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo">Your Name | E-Portfolio</div>
+        <div class="logo">
+          <img src="logo.png" alt="Personal logo" />
+          <span>Mitchell Holdstock | E-Portfolio</span>
+        </div>
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#leadership">Leadership</a>
@@ -335,10 +363,10 @@
         </div>
 
         <div class="profile-card">
-          <img src="https://via.placeholder.com/500x620.png?text=Add+Your+Photo" alt="Professional profile photo placeholder" />
+          <img src="logo.png" alt="Professional profile photo placeholder" />
           <div class="profile-meta">
-            <h3>Your Name</h3>
-            <p>Student | Future Professional</p>
+            <h3>Mitchell Holdstock</h3>
+            <p>Software Developer at Bison Components</p>
           </div>
         </div>
       </div>
@@ -419,7 +447,7 @@
 
         <div class="timeline-item">
           <h3>Student / Academic Experience</h3>
-          <div class="timeline-meta">Your School | Your Program</div>
+          <div class="timeline-meta">Southern Utah University | Computer Science</div>
           <p>
             I have completed coursework and projects that required critical thinking, collaboration,
             and independent problem-solving. Through these experiences, I developed stronger technical,
@@ -429,11 +457,12 @@
         </div>
 
         <div class="timeline-item">
-          <h3>Additional Role or Experience</h3>
-          <div class="timeline-meta">Add workplace, volunteer work, internship, or class team role</div>
+          <h3>Software Developer</h3>
+          <div class="timeline-meta">Bison Components</div>
           <p>
-            Replace this section with a real role if you have one. Include your responsibilities, the work you completed,
-            and how you contributed. Keep it to 3 to 5 sentences for a clean and professional look.
+            I contribute to software work that supports business and technical needs while continuing to strengthen my development skills.
+            My role focuses on problem-solving, reliability, and building solutions that are practical and effective. This experience has
+            helped me grow in professional communication, development workflow, and applying technical knowledge in real settings.
           </p>
         </div>
       </div>
@@ -444,30 +473,30 @@
         <h2 class="section-title">Portfolio Projects</h2>
         <div class="grid-3">
           <article class="project-card">
-            <h3>Project One</h3>
+            <h3>Android Application Projects</h3>
             <p>
-              A project where I developed an application using programming concepts and structured problem-solving.
-              This project improved my coding ability and strengthened my understanding of implementation.
+              I created Android-based coursework projects that focused on layout design, usability, accessibility, and app structure.
+              These projects helped me build experience with mobile development, interface design, and writing organized application logic.
             </p>
-            <span class="project-tag">Application Development</span>
+            <span class="project-tag">Android Development</span>
           </article>
 
           <article class="project-card">
-            <h3>Project Two</h3>
+            <h3>Java Swing Desktop Application</h3>
             <p>
-              A coursework assignment focused on design, structure, and functionality. It helped me improve planning,
-              organization, and the ability to create polished work from start to finish.
+              I developed a Java Swing application that calculated the day of the week for a selected date while validating user input.
+              This project strengthened my understanding of GUI development, event handling, and building clean user-focused desktop tools.
             </p>
-            <span class="project-tag">Design & Planning</span>
+            <span class="project-tag">Java GUI</span>
           </article>
 
           <article class="project-card">
-            <h3>Project Three</h3>
+            <h3>Operating Systems Coursework</h3>
             <p>
-              A collaborative or independent project that required communication, time management, and adaptability.
-              It demonstrated my ability to stay productive and complete meaningful work under expectations.
+              I completed projects and written work involving operating systems topics such as synchronization, producer-consumer logic,
+              readers-writers, and related problem-solving concepts. This work improved my understanding of system behavior and technical analysis.
             </p>
-            <span class="project-tag">Teamwork & Execution</span>
+            <span class="project-tag">Systems Concepts</span>
           </article>
         </div>
       </div>
@@ -511,16 +540,16 @@
       <div class="section-card">
         <h2 class="section-title">Contact</h2>
         <ul class="contact-list">
-          <li><strong>Email:</strong> yourprofessionalemail@example.com</li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/" target="_blank">linkedin.com/in/yourname</a></li>
-          <li><strong>GitHub:</strong> <a href="https://github.com/" target="_blank">github.com/yourusername</a></li>
+          <li><strong>Email:</strong> mitchell@bisoncomp.com</li>
+          <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mitchell-holdstock" target="_blank">linkedin.com/in/mitchell-holdstock</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/SirHoldembeck" target="_blank">github.com/SirHoldembeck</a></li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Your Name. All rights reserved.
+    © 2026 Mitchell Holdstock. All rights reserved.
   </footer>
 </body>
 </html>
